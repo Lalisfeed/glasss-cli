@@ -70,7 +70,7 @@ MIT License.
 
 ### API
 
-- [glasss](https://github.com/Lalisfeed/glasss) - A glasssmorphism based NPM Library.
+- **[glasss](https://github.com/Lalisfeed/glasss)** - A glasssmorphism based NPM Library.
 
 ### License
 

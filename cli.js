@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 'use strict'
 const fs = require('fs')
 const path = require('path')
@@ -20,7 +20,7 @@ const pkgJX = (argx) => {
   "dependencies": {
     "glasss": "^1.1.3"
   },
-  "author": "Lali Akhil Raj",
+  "author": "",
   "license": "MIT",
   "description": ""
 }
@@ -35,7 +35,7 @@ const indEX = (argx) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>`+ argx +`</title>
 </head>
-<body background="#333">
+<body style="background:#333;color: white;">
     <div class="glasscss">
         <h1>HELLO WORLD :)</h1>
     </div>
@@ -109,7 +109,7 @@ if (args.length == 1 && (args[0] === "--help" || args[0] === "-h")) {
     console.log("A " + "Command Line Interface".yellow + " for the "+ "glasss".green + " NPM package.")
     console.log("Usage:".yellow + " glasss [OPTION]... [DIRECTORY]...".white)
     console.log(" ")
-    console.log("Here are the list of ways for using the " + "glasss-cli".green)
+    console.log("Here are the list of ways to use the " + "glasss-cli".green)
     console.log("  [OPTION]...                  [INFO]...") 
     console.log("  init                       - This will create a glasss app in the current working directory.") 
     console.log("  create-app [DIRECTORY]...  - This will create a glasss app with the arguments as directory name .")
@@ -119,7 +119,7 @@ if (args.length == 1 && (args[0] === "--help" || args[0] === "-h")) {
     console.log(" ")
     console.log(" ")
     console.log("glasss-cli v".green + pjson.version.green)
-    console.log("For more details visit https://github.com/Lalisfeed/glasss-cli/ ".white)
+    console.log("For more details visit https://www.npmjs.com/package/glasss-cli ".white)
     console.log("MIT License.".white)
 }
 else if (args.length == 1 && args[0] === "--version") {
@@ -129,18 +129,21 @@ else if (args.length == 1 && args[0] === "--version") {
 else if (args.length == 1 && args[0] === "-v") {
     console.log(pjson.version)
 }
-
-// create a file
+else if (args.length == 2 && (args[0] === "init" && (args[1] === "--help" || args[1] === "-h"))) {
+    console.log("Usage : glasss init".white )
+    console.log(" ")
+}
+// create files
 else if (args.length == 1 && args[0] === "init") {
-    console.log(args[0]) 
-    console.log(path.basename(process.cwd())) 
+    // console.log(args[0]) 
+    // console.log(path.basename(process.cwd())) 
     let door = path.basename(process.cwd())
     fs.writeFileSync(__dirname + "/index.html", indEX(door));
     fs.writeFileSync(__dirname + "/package.json", pkgJX(door));
     fs.writeFileSync(__dirname + "/app.js", appJS(door));
- 
+    console.log("Created a glass application in the current working directory.") 
 }
-else if (args.length == 1 && args[0] === "create-app") {
+else if ((args.length == 1 && args[0] === "create-app") || (args.length == 2 && (args[0] === "create-app" && (args[1] === "--help" || args[1] === "-h")))) {
     console.log("Usage :".red +" glasss create-app " + "[DIRECTORY]...")
     console.log(" ")
     console.log("For Example:".white)
@@ -166,10 +169,10 @@ else if (args.length >= 2 && args[0] === "create-app") {
                     }
                 }
                 else {
-                    console.log(":) ".green + "Created " + arg.green + " glasss application.")
                     fs.writeFileSync(__dirname +"/"+  arg + "/index.html", indEX(arg));
                     fs.writeFileSync(__dirname +"/"+  arg + "/package.json", pkgJX(arg));
                     fs.writeFileSync(__dirname +"/"+ arg + "/app.js", appJS(arg));
+                    console.log(":) ".green + "created " + arg.green + " glasss application.")
                 }
             })
         }
@@ -180,3 +183,4 @@ else if (args.length <= 1) {
     console.log("Try 'glasss --help' for more information.".white)
     console.log(" ")
 }
+// cli.js

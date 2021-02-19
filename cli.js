@@ -18,7 +18,7 @@ const pkgJX = (argx) => {
     "test": "echo 'Error: no test specified' && exit 1"
   },
   "dependencies": {
-    "glasss": "^1.1.4"
+    "glasss": "^1.1.5"
   },
   "author": "",
   "license": "MIT",
@@ -61,41 +61,41 @@ const appJS = (argx) => {
     return  `import { glasscss, glassClass } from "glasss"
 
 glasscss({
-    back_ground: "rgba( 255, 255, 255, 0.25)", // alphalimit at [0 - 1] 
+    back_ground: "rgba( 255, 255, 255, 0.25)", // alphalimit at [0 - 1]
     backdrop_filter: "4px", // filter limit at [0.0 - 20.0] recommended
     border_radius: "10px", // 10px is recommended
     border_wide: true, // true for best results
     color_value: "white", // your color
-    margin_value: "10px", // your value 
-    padding_value: "10px", // your value 
+    margin_value: "10px", // your value
+    padding_value: "10px", // your value
 });
 
 glassClass({
     "class1": {
-        back_ground: "rgba( 255, 255 , 255, 0.25)", 
-        backdrop_filter: "5px", 
-        border_radius: "0px", 
-        border_wide: true, 
-        color_value: "white", 
-        margin_value: "0px", 
+        back_ground: "rgba( 255, 255 , 255, 0.25)",
+        backdrop_filter: "5px",
+        border_radius: "0px",
+        border_wide: true,
+        color_value: "white",
+        margin_value: "0px",
         padding_value: "0px"
     },
     "class2": {
-        back_ground: "rgba( 225, 0, 0, 0.42)", 
-        backdrop_filter: "10px", 
-        border_radius: "10px", 
-        border_wide: false, 
-        color_value: "yellow", 
-        margin_value: "10px", 
+        back_ground: "rgba( 225, 0, 0, 0.42)",
+        backdrop_filter: "10px",
+        border_radius: "10px",
+        border_wide: false,
+        color_value: "yellow",
+        margin_value: "10px",
         padding_value: "10px"
-    }, 
+    },
     "class3": {
-        back_ground: "rgba( 0, 100, 255, 0.75)", 
-        backdrop_filter: "10px", 
-        border_radius: "10px", 
-        border_wide: true, 
-        color_value: "white", 
-        margin_value: "20px", 
+        back_ground: "rgba( 0, 100, 255, 0.75)",
+        backdrop_filter: "10px",
+        border_radius: "10px",
+        border_wide: true,
+        color_value: "white",
+        margin_value: "20px",
         padding_value: "20px"
     }
 });
@@ -111,8 +111,8 @@ if (args.length == 1 && (args[0] === "--help" || args[0] === "-h")) {
     console.log("Usage: glasss [OPTION]... [DIRECTORY]...".white)
     console.log(" ")
     console.log("Here are the list of ways to use the " + "glasss-cli".green)
-    console.log("  [OPTION]...                  [INFO]...") 
-    console.log("  init                       - This will create a glasss app in the current working directory.") 
+    console.log("  [OPTION]...                  [INFO]...")
+    console.log("  init                       - This will create a glasss app in the current working directory.")
     console.log("  create-app [DIRECTORY]...  - This will create a glasss app with the arguments as directory name .")
     console.log("  -h,      --help      display help and exit")
     console.log("  -v,      --version      display version and exit")
@@ -135,13 +135,13 @@ else if (args.length == 2 && (args[0] === "init" && (args[1] === "--help" || arg
 }
 // create files
 else if (args.length == 1 && args[0] === "init") {
-    // console.log(args[0]) 
-    // console.log(path.basename(process.cwd())) 
+    // console.log(args[0])
+    // console.log(path.basename(process.cwd()))
     let door = path.basename(process.cwd())
     fs.writeFileSync(process.cwd() + "/index.html", indEX(door));
     fs.writeFileSync(process.cwd()+ "/package.json", pkgJX(door));
     fs.writeFileSync(process.cwd() + "/app.js", appJS(door));
-    console.log(":)".green + " Created a glasss application here.") 
+    console.log(":)".green + " Created a glasss application here.")
 }
 else if ((args.length == 1 && args[0] === "create-app") || (args.length == 2 && (args[0] === "create-app" && (args[1] === "--help" || args[1] === "-h")))) {
     console.log("Usage :".red +" glasss create-app " + "[DIRECTORY]...")
@@ -176,7 +176,7 @@ else if (args.length >= 2 && args[0] === "create-app") {
                 }
             })
         }
-    }) 
+    })
 }
 else if (args.length <= 1) {
     console.log("glasss: Invalid Option.".white)
